@@ -1,0 +1,13 @@
+{
+  "AutoSignIn": {
+    "name": "统一推送服务",
+    "description": "将MoviePilot事件推送到自定义的统一推送服务（支持标题/内容模板、Token认证）",
+    "labels": "通知",
+    "version": "0.1",
+    "icon": "webhook.png",
+    "author": "WINGS",
+    "level": 1,
+    "history": {
+      "v0.1": "魔法推送"
+    }
+  }
