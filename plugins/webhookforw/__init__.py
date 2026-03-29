@@ -17,9 +17,9 @@ class UnifiedPushNotifier(_PluginBase):
     plugin_desc = "将MoviePilot事件推送到自定义的统一推送服务（支持标题/内容模板、Token认证）"
     plugin_icon = "webhook.png
     plugin_version = "1.1"
-    plugin_author = "User"
+    plugin_author = "WINGS"
     author_url = "https://github.com/yourname"
-    plugin_config_prefix = "unified_push_"
+    plugin_config_prefix = "webhook_push_"
     plugin_order = 15
     auth_level = 1
 
