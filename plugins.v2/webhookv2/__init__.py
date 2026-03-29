@@ -13,7 +13,7 @@ class WebHookv2(_PluginBase):
     plugin_name = "WebHookv2"
     plugin_desc = "MoviePilot V2 系统通知推送至自定义接口，支持Bearer/PathToken，POST/GET"
     plugin_icon = "webhook.png"
-    plugin_version = "2.0"
+    plugin_version = "2.1"
     plugin_author = "WINGS"
     author_url = ""
     plugin_config_prefix = "webhookv2"
@@ -181,20 +181,35 @@ class WebHookv2(_PluginBase):
             return
 
         data = event.event_data or {}
-        title = data.get("title", "MoviePilot 通知")
-        content = data.get("text", "")
-        if not content:
+        logger.info(f"通知事件数据：{data}")
+
+        # ========================
+        # 【V2 修复】正确获取标题和内容
+        # ========================
+        title = data.get("title") or data.get("message_title") or "MoviePilot 通知"
+        text = data.get("text") or data.get("message_content") or ""
+        msg_type = data.get("type")
+
+        # 空内容直接跳过
+        if not text:
+            logger.info("跳过空消息通知")
             return
 
-        self._push(title, content)
+        # 强制使用合法的消息类型（解决类型错误）
+        if msg_type not in ["text", "markdown", "html"]:
+            msg_type = self._msg_type
 
-    def _push(self, title: str, content: str):
+        self._push(title, text, msg_type)
+
+    def _push(self, title: str, content: str, msg_type: str):
         base = self._api_base.rstrip("/")
         token = self._token
+
+        # 严格按照接口要求组装JSON
         payload = {
             "title": title,
             "content": content,
-            "type": self._msg_type
+            "type": msg_type
         }
         headers = {}
 
