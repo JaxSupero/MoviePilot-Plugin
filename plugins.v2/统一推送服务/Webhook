@@ -20,7 +20,7 @@ class UnifiedPushNotifier(_PluginBase):
     plugin_icon = "notification.png"
     plugin_version = "1.1"
     plugin_author = "WINGS"
-    author_url = "https://github.com/yourname"
+    author_url = "https://github.com/JaxSupero/MoviePilot/blob/main/Plugin/%E7%BB%9F%E4%B8%80%E6%8E%A8%E9%80%81%E6%9C%8D%E5%8A%A1/Webhook"
     plugin_config_prefix = "unified_push_"
     plugin_order = 15
     auth_level = 1
