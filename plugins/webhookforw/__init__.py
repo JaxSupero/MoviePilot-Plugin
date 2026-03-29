@@ -15,7 +15,7 @@ class UnifiedPushNotifier(_PluginBase):
     # 插件元数据
     plugin_name = "统一推送服务"
     plugin_desc = "将MoviePilot事件推送到自定义的统一推送服务（支持标题/内容模板、Token认证）"
-    plugin_icon = "notification.png"
+    plugin_icon = "webhook.png
     plugin_version = "1.1"
     plugin_author = "User"
     author_url = "https://github.com/yourname"
